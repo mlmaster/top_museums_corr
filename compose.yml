@@ -1,0 +1,5 @@
+services:
+    top_museums_corr:
+        build:  ./
+        ports:
+            - 5000:8888
