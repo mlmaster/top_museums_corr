@@ -20,42 +20,55 @@ def prep_loc(col):
     return col
 
 #Convert values like "7,726,321[1][2]" to int "7726321" - remove links and commas
+#8,900,000 (2023)[2] - also remove year reference
 def prep_int(col):  
-    return re.sub("[\[].*?[\]]", "", col).replace(',','') 
+    return re.sub("[\(\[].*?[\)\]]", "", col).replace(',','') 
 
 #Remove links eg "Opium War Museum [zh]"
 def prep_str(col):
     return re.sub("[\[].*?[\]]", "", col)
 
-def get_museums_data(page):
+def get_museums_data(page, dir):
    
-	#NOTE: Open issue with wikipedia related to reading tables https://github.com/goldsmith/Wikipedia/issues/111 
+    #NOTE: Open issue with wikipedia related to reading tables https://github.com/goldsmith/Wikipedia/issues/111 
 
-	#Extract data from Wikipedia page
-	#NOTE: Data from 2022
-	top_museums=pd.read_html(wikipedia.page(page).html())[0]
+    #Extract data from Wikipedia page
+    #NOTE: Data from 2022/2023 mixed
+    top_museums=pd.read_html(wikipedia.page(page).html())[0]
 
-	#NOTE: This works as well 
-	#top_museums=pd.read_html("https://en.wikipedia.org/wiki/" + page, attrs={"class":"wikitable"})[0]
+    #Dump response locally
+    dump=os.path.join(dir,"../external/dump/wiki_top_museums.csv")
+    top_museums.to_csv(dump, sep="\t", index=False)
+    #top_museums=pd.read_csv(dump, sep="\t")
+    
+    
+    #NOTE: This works as well 
+    #top_museums=pd.read_html("https://en.wikipedia.org/wiki/" + page, attrs={"class":"wikitable"})[0]
 
-	#Fix header
-	top_museums.rename(columns={'Visitors in 2022':'visitors'}, inplace=True)
-	top_museums.columns=top_museums.columns.str.lower()
+    #Check the schema
+    assert any(top_museums.columns.str.contains("Name")), "Wikipedia data schema changed!"
+    assert any(top_museums.columns.str.contains("Location")), "Wikipedia data schema changed!"
+    assert any(top_museums.columns.str.contains("Visitors")), "Wikipedia data schema changed!"
+    
 
-	#TODO: Data checks
+    #Fix header
+    top_museums.rename(columns=lambda c: 'visitors' if 'Visitors' in c else c, inplace=True)
+    top_museums.columns=top_museums.columns.str.lower()
 
-	#NOTE: Location also contains single city name without country "Vatican City" - exception; in this case country name is also "Vatican City",
-	#need to transform to "Vatican City, Vatican City"
+    #TODO: Data checks
 
-	#Cleanup data 
-	top_museums.name=top_museums.name.apply(prep_str)
-	top_museums.location=top_museums.location.apply(prep_loc)
-	top_museums.visitors=pd.to_numeric(top_museums.visitors.apply(prep_int))
+    #NOTE: Location also contains single city name without country "Vatican City" - exception; in this case country name is also "Vatican City",
+    #need to transform to "Vatican City, Vatican City"
 
-	#Only include museums with >2000000 visitors? 
-	#print(top_museums.loc[top_museums.Visitors>2000000]) - only 27
+    #Cleanup data 
+    top_museums.name=top_museums.name.apply(prep_str)
+    top_museums.location=top_museums.location.apply(prep_loc)
+    top_museums.visitors=pd.to_numeric(top_museums.visitors.apply(prep_int))
 
-	return top_museums
+    #Only include museums with >2000000 visitors? 
+    #print(top_museums.loc[top_museums.Visitors>2000000]) - only 27
+
+    return top_museums
 
 def get_cities_population(file):
 
@@ -102,7 +115,7 @@ def create_db(museums, cities):
 def generate_db():
     module_dir = os.path.dirname(os.path.abspath(__file__))
 
-    top_museums=get_museums_data("List_of_most-visited_museums")
+    top_museums=get_museums_data("List_of_most-visited_museums", module_dir)
     cities=get_cities_population(os.path.join(module_dir,"../external/worldcities.csv"))
     cities=get_cities_density(os.path.join(module_dir, "../external/location_density_google.csv"), cities)
 
