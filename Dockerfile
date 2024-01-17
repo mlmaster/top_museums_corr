@@ -14,6 +14,7 @@ RUN pip install --upgrade pip && \
     fix-permissions "/home/${NB_USER}"
 
 RUN mkdir -p ./top_museums/data/db/
+RUN mkdir -p ./top_museums/data/external/dump/
 
 COPY ./README.md ./top_museums/
 
