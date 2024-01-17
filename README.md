@@ -3,7 +3,7 @@ In this project we are trying to identify whether there is any correlation betwe
 
 Docker image available on Dockerhub: 
 
-        - docker pull mlmaster/top_museums_corr
+        - docker pull mlmaster/top_museums_corr:<version>
 
 To view the analysis in jupyter notebook in container: 
 
