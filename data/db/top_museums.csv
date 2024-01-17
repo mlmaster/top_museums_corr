@@ -1,9 +1,9 @@
 rank	name	location	visitors	population	density	id
-1	Louvre	Paris, France	7726321	11060000	20000	93912381
+1	Louvre	Paris, France	8900000	11060000	20000	93912381
 2	Vatican Museums	Vatican City, Vatican City	5080866	825	1559	17773258
 3	Natural History Museum	London, United Kingdom	4654608	11262000	14500	45260927
-4	British Museum	London, United Kingdom	4097253	11262000	14500	93233156
-5	National Museum of Natural History	Washington, D.C., United States	3900000	4810669	11535	2603950
+4	National Museum of Natural History	Washington, D.C., United States	4400000	4810669	11535	2603950
+5	British Museum	London, United Kingdom	4097253	11262000	14500	93233156
 6	Tate Modern	London, United Kingdom	3883160	11262000	14500	72759854
 7	National Museum of Korea	Seoul, South Korea	3411381	23016000	16000	75407497
 8	Guangdong Museum	Guangzhou, China	3359700	26940000	2000	20313475
@@ -23,16 +23,16 @@ rank	name	location	visitors	population	density	id
 22	National Museum of Natural Science	Taichung, Taiwan	2299808	3033885	1300	83129822
 23	Galleria degli Uffizi	Florence, Italy	2222692	380948	3600	39235290
 24	Museum of Modern Art	New York, United States	2190440	18972871	11300	75601673
-25	Topography of Terror	Berlin, Germany	2100000	4473101	4126	72863970
-26	M+	Hong Kong, Hong Kong	2034331	7450000	6800	31738104
-27	Opium War Museum 	Dongguan, China	2025800	10646000	4200	63362039
-28	Cité des Sciences et de l'Industrie	Paris, France	1992823	11060000	20000	19859486
-29	National Museum of Scotland	Edinburgh, United Kingdom	1973751	488050	1830	98284058
-30	State Tretyakov Gallery	Moscow, Russia	1910000	17332000	5080	86518926
-31	National Taiwan Science Education Center	Taipei, Taiwan	1878504	9078000	9127	45390542
-32	National Science and Technology Museum	Kaohsiung, Taiwan	1875372	2733566	940	98392678
-33	National Museum of Modern and Contemporary Art	Seoul, South Korea	1806641	23016000	16000	93057161
-34	Smithsonian Museum of American History	Washington, D.C., United States	1800000	4810669	11535	94056565
+25	Smithsonian Museum of American History	Washington, D.C., United States	2100000	4810669	11535	94056565
+26	Topography of Terror	Berlin, Germany	2100000	4473101	4126	72863970
+27	M+	Hong Kong, Hong Kong	2034331	7450000	6800	31738104
+28	Opium War Museum 	Dongguan, China	2025800	10646000	4200	63362039
+29	Cité des Sciences et de l'Industrie	Paris, France	1992823	11060000	20000	19859486
+30	National Museum of Scotland	Edinburgh, United Kingdom	1973751	488050	1830	98284058
+31	State Tretyakov Gallery	Moscow, Russia	1910000	17332000	5080	86518926
+32	National Taiwan Science Education Center	Taipei, Taiwan	1878504	9078000	9127	45390542
+33	National Science and Technology Museum	Kaohsiung, Taiwan	1875372	2733566	940	98392678
+34	National Museum of Modern and Contemporary Art	Seoul, South Korea	1806641	23016000	16000	93057161
 35	Rijksmuseum	Amsterdam, Netherlands	1766084	1459402	4900	29357359
 36	California Science Center	Los Angeles, United States	1694000	12121244	3206	28618936
 37	National Museum of China	Beijing, China	1630911	18522000	1700	53657888
@@ -69,4 +69,3 @@ rank	name	location	visitors	population	density	id
 68	Scottish National Gallery	Edinburgh, United Kingdom	1277230	488050	1830	55961760
 69	National Gallery Singapore	Singapore, Singapore	1262189	5983000	8592	36461456
 70	Museo Reina Sofía	Madrid, Spain	1253183	6211000	5300	45546159
-71	Museum of European and Mediterranean Civilisations	Marseille, France	1251030	870731	3500	40138222
